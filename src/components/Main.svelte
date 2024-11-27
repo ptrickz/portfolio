@@ -14,16 +14,16 @@
   ];
 
   let projects = [
+    {
+      project_name: "Faculty Guide with Chatbot",
+      project_color: "text-red-400",
+    },
     { project_name: "CCTV Monitoring", project_color: "text-blue-400" },
     { project_name: "HR Management App", project_color: "text-orange-400" },
     { project_name: "State Citizen App", project_color: "text-yellow-400" },
     { project_name: "Wordpress Website", project_color: "text-blue-800" },
     { project_name: "Luggage Booking App", project_color: "text-green-400" },
-    { project_name: "Tempeh Store App", project_color: "text-pink-800" },
-    {
-      project_name: "Faculty Guide with Chatbot",
-      project_color: "text-red-800",
-    },
+    { project_name: "Tempeh Store App", project_color: "text-pink-400" },
   ];
 
   const socialLinks = {
@@ -47,12 +47,12 @@
       ".tech-row",
       {
         x: (index) => {
-          return index % 2 == 0 ? 150 : -150;
+          return index % 2 == 0 ? 100 : -100;
         },
       },
       {
         x: (index) => {
-          return index % 2 == 0 ? -150 : 150;
+          return index % 2 == 0 ? -100 : 100;
         },
         ease: "power1.inOut",
       }
@@ -134,7 +134,7 @@
         <div
           class="tech-row poppins font-semibold flex mb-8 items-center justify-center gap-4 text-slate-700"
         >
-          {#each Array(15) as _, i}
+          {#each Array(14) as _, i}
             <span
               class={"tech-item text-6xl font-extrabold uppercase tracking-tighter " +
                 (i == 7 && tech_color ? tech_color : "inherit")}
@@ -162,15 +162,15 @@
           <div
             class="tech-row poppins font-semibold flex mb-8 items-center justify-center gap-4 text-slate-700 mt-8"
           >
-            {#each Array(15) as _, i}
+            {#each Array(6) as _, i}
               <span
-                class={"tech-item text-3xl font-bold uppercase tracking-loose " +
-                  (i == 6 && project_color ? project_color : "inherit")}
+                class={"tech-item text-2xl font-bold uppercase tracking-loose " +
+                  (i == 3 && project_color ? project_color : "inherit")}
                 >{project_name}
               </span>
               <i
-                class={"fa-solid fa-circle text-3xl " +
-                  (i == 5 && project_color ? project_color : "inherit")}
+                class={"fa-solid fa-circle text-2xl " +
+                  (i == 2 && project_color ? project_color : "inherit")}
               ></i>
             {/each}
           </div>
@@ -181,22 +181,25 @@
   <br />
 
   <br id="contact" />
-  <section class="grid grid-cols-1 gap-10 py-8 sm:py-14 overflow-hidden">
+  <section class="grid grid-cols-1 gap-6 py-6 sm:py-12 overflow-hidden">
     <div
-      class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
+      class="flex flex-col lg:justify-center text-center lg:text-left gap-4 md:gap-6 lg:gap-8"
     >
       <h1
-        class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
+        class="font-semibold text-4xl sm:text-5xl md:text-6xl text-gray-300 uppercase"
       >
         Contact
       </h1>
-      <div class="flex flex-row gap-10">
-        <div class="flex flex-row justify-center items-center gap-2">
+      <div
+        class="flex flex-wrap justify-center lg:justify-start items-center gap-6"
+      >
+        <!-- GitHub -->
+        <div class="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 24 24"
-            class="w-6 h-6 text-white"
+            class="w-5 h-5 sm:w-6 sm:h-6 text-white"
           >
             <path
               d="M12 0C5.371 0 0 5.371 0 12c0 5.303 3.438 9.8 8.207 11.387.599.111.793-.26.793-.577v-2.163c-3.338.724-4.042-1.612-4.042-1.612-.546-1.387-1.333-1.755-1.333-1.755-1.089-.745.083-.73.083-.73 1.205.084 1.839 1.238 1.839 1.238 1.07 1.833 2.809 1.303 3.495.997.108-.775.418-1.303.76-1.604-2.665-.305-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.238-3.221-.123-.303-.536-1.522.118-3.176 0 0 1.01-.322 3.3 1.23a11.46 11.46 0 0 1 3.003-.404c1.019.005 2.046.138 3.003.404 2.29-1.552 3.3-1.23 3.3-1.23.656 1.654.243 2.873.12 3.176.771.84 1.238 1.911 1.238 3.221 0 4.609-2.806 5.624-5.479 5.921.429.372.814 1.102.814 2.222v3.293c0 .32.192.694.801.576C20.565 21.795 24 17.3 24 12 24 5.371 18.629 0 12 0z"
@@ -205,49 +208,56 @@
           <a
             href={socialLinks.github}
             target="_blank"
-            class="font-semibold text-3xl sm:text-1xl md:text-2xl text-white"
-            >GitHub</a
+            class="font-semibold text-lg sm:text-xl text-white"
           >
+            GitHub
+          </a>
         </div>
-        <div class="flex flex-row justify-center items-center gap-2">
+
+        <!-- LinkedIn -->
+        <div class="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 24 24"
-            class="w-6 h-6 text-blue-400"
+            class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400"
           >
             <path
               d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.208 24 24 23.226 24 22.271V1.729C24 .774 23.208 0 22.225 0zM7.125 20.452H3.562V9h3.563v11.452zM5.345 7.643c-1.141 0-2.063-.938-2.063-2.083 0-1.15.922-2.083 2.063-2.083 1.141 0 2.063.938 2.063 2.083 0 1.145-.922 2.083-2.063 2.083zM20.451 20.452h-3.562V14.83c0-1.342-.029-3.072-1.872-3.072-1.872 0-2.158 1.461-2.158 2.973v5.721h-3.562V9h3.419v1.561h.049c.477-.903 1.641-1.856 3.38-1.856 3.618 0 4.285 2.383 4.285 5.479v6.268z"
             />
           </svg>
-
           <a
             href={socialLinks.linkedin}
             target="_blank"
-            class="font-semibold text-3xl sm:text-1xl md:text-2xl text-blue-400"
-            >LinkedIn</a
+            class="font-semibold text-lg sm:text-xl text-blue-400"
           >
+            LinkedIn
+          </a>
         </div>
-        <div class="flex flex-row justify-center items-center gap-2">
+
+        <!-- Email -->
+        <div class="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
             viewBox="0 0 24 24"
-            class="w-6 h-6 text-green-400"
+            class="w-5 h-5 sm:w-6 sm:h-6 text-green-400"
           >
             <path
               d="M12 13.065 2.365 6.558C2.94 6.165 3.655 6 4.5 6h15c.845 0 1.56.165 2.135.558L12 13.065zM12 15.065l9.7-6.708c.187.439.3.946.3 1.517v7c0 1.104-.897 2-2 2H4c-1.103 0-2-.896-2-2v-7c0-.571.113-1.078.3-1.517L12 15.065z"
             />
           </svg>
-
           <a
             href={`mailto:${socialLinks.email}`}
             target="_blank"
-            class="font-semibold text-3xl sm:text-1xl md:text-2xl text-green-400"
-            >{socialLinks.email}</a
+            class="font-semibold text-lg sm:text-xl text-green-400"
           >
+            {socialLinks.email}
+          </a>
         </div>
-        <div class="flex flex-row justify-center items-center gap-2">
+
+        <!-- Phone -->
+        <div class="flex items-center gap-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -259,9 +269,7 @@
             />
           </svg>
 
-          <p
-            class="font-semibold text-3xl sm:text-1xl md:text-2xl text-yellow-400"
-          >
+          <p class="font-semibold text-lg sm:text-xl text-yellow-400">
             {socialLinks.phoneNumber}
           </p>
         </div>
