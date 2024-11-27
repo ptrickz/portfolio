@@ -16,12 +16,13 @@
   let projects = [
     { project_name: "CCTV Monitoring", project_color: "text-blue-400" },
     { project_name: "HR Management App", project_color: "text-orange-400" },
-    { project_name: "Sarawak CitizenApp", project_color: "text-yellow-400" },
-    { project_name: "MPRH Website", project_color: "text-blue-800" },
-    { project_name: "Luggage Booking App", project_color: "text-orange-800" },
+    { project_name: "State Citizen App", project_color: "text-yellow-400" },
+    { project_name: "Wordpress Website", project_color: "text-blue-800" },
+    { project_name: "Luggage Booking App", project_color: "text-green-400" },
+    { project_name: "Tempeh Store App", project_color: "text-pink-800" },
     {
       project_name: "Faculty Guide with Chatbot",
-      project_color: "text-yellow-800",
+      project_color: "text-red-800",
     },
   ];
 
