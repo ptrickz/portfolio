@@ -2,12 +2,13 @@
   import { onMount } from "svelte";
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+  import { Card } from "flowbite-svelte";
 
   gsap.registerPlugin(ScrollTrigger);
   let component: HTMLElement;
-
   let tech = [
     { tech_name: "Flutter", tech_color: "text-blue-400" },
+    { tech_name: "ReactJS", tech_color: "text-blue-600" },
     { tech_name: "Svelte", tech_color: "text-orange-400" },
     { tech_name: "Firebase", tech_color: "text-yellow-400" },
     { tech_name: "XCode", tech_color: "text-blue-800" },
@@ -16,14 +17,50 @@
   let projects = [
     {
       project_name: "Faculty Guide with Chatbot",
-      project_color: "text-red-400",
+      project_img: "images/faqulty.png",
+      project_desc:
+        "A faculty guide application with AI Chatbot (Google Dialogflow)",
+      project_link:
+        "https://docs.google.com/presentation/d/110fBZGL08JEzMD7SFXwJWA1Nnon4xdUV/edit?usp=sharing&ouid=115596111486891015734&rtpof=true&sd=true",
     },
-    { project_name: "CCTV Monitoring", project_color: "text-blue-400" },
-    { project_name: "HR Management App", project_color: "text-orange-400" },
-    { project_name: "State Citizen App", project_color: "text-yellow-400" },
-    { project_name: "Wordpress Website", project_color: "text-blue-800" },
-    { project_name: "Luggage Booking App", project_color: "text-green-400" },
-    { project_name: "Tempeh Store App", project_color: "text-pink-400" },
+    {
+      project_name: "IVS300 Mobile Application",
+      project_img: "images/ivs.png",
+      project_desc: "A CCTV Monitoring mobile application for SDEC",
+      project_link: "https://sdec.com.my/web/",
+    },
+    {
+      project_name: "MyPSM Mobile",
+      project_img: "images/mypsm.png",
+      project_desc: "A Human Resource management mobile application for LKIM",
+      project_link: "https://www.lkim.gov.my/",
+    },
+    {
+      project_name: "CitizenApp",
+      project_img: "images/app_logo.png",
+      project_desc: "A citizen mobile application for SMA and SIOC",
+      project_link: "https://www.sma.gov.my/web/home/index/",
+    },
+    {
+      project_name: "MPRH Website",
+      project_img: "images/mprh.png",
+      project_desc: "A wordpress website for MPRH - LPPKN",
+      project_link: "https://mprh.lppkn.gov.my/",
+    },
+    {
+      project_name: "Luggage Booking App",
+      project_img: "images/eluggage.png",
+      project_desc:
+        "A luggage booking mobile application for UNIMAS students (Freelance)",
+      project_link: "",
+    },
+    {
+      project_name: "Tempeh Store App",
+      project_img: "images/toba.png",
+      project_desc:
+        "A tempeh store booking application for small tempeh business (Freelance)",
+      project_link: "",
+    },
   ];
 
   const socialLinks = {
@@ -39,7 +76,7 @@
         trigger: component,
         start: "top bottom",
         end: "bottom top",
-        scrub: 4,
+        scrub: 5,
       },
     });
 
@@ -82,13 +119,14 @@
     <div class="relative shadow-2xl grid place-items-center">
       <!-- svelte-ignore a11y-img-redundant-alt -->
       <img
-        src="images/p.jpeg"
+        src="images/pat.jpeg"
         alt="Profile Image"
-        class="object-cover z-[2] max-h-[70vh]"
+        class="object-cover z-[2] max-h-[70vh] rounded-lg"
       />
     </div>
   </section>
   <br id="about" />
+  <br />
   <section class="grid grid-cols-1 gap-10 py-8 sm:py-14 overflow-hidden">
     <div
       class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
@@ -118,6 +156,7 @@
     </div>
   </section>
   <br id="tech" />
+  <br />
   <section
     class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 overflow-hidden"
   >
@@ -136,7 +175,7 @@
         >
           {#each Array(14) as _, i}
             <span
-              class={"tech-item text-6xl font-extrabold uppercase tracking-tighter " +
+              class={"tech-item text-4xl font-extrabold uppercase tracking-tighter " +
                 (i == 7 && tech_color ? tech_color : "inherit")}
               >{tech_name}
             </span>
@@ -150,36 +189,36 @@
     </div>
   </section>
   <br id="projects" />
-  <section class="grid grid-cols-1 gap-10 py-8 sm:py-14 overflow-hidden">
-    <div
-      class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
+  <br />
+  <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
+    <h1
+      class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
+      bind:this={component}
     >
-      <h1
-        class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
-      >
-        Mobile Apps & Websites
-        {#each projects as { project_name, project_color }}
-          <div
-            class="tech-row poppins font-semibold flex mb-8 items-center justify-center gap-4 text-slate-700 mt-8"
-          >
-            {#each Array(6) as _, i}
-              <span
-                class={"tech-item text-2xl font-bold uppercase tracking-loose " +
-                  (i == 3 && project_color ? project_color : "inherit")}
-                >{project_name}
-              </span>
-              <i
-                class={"fa-solid fa-circle text-2xl " +
-                  (i == 2 && project_color ? project_color : "inherit")}
-              ></i>
-            {/each}
+      Mobile Apps & Websites
+    </h1>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-5 justify-center items-center gap-8 md:gap-10 lg:gap-12"
+    >
+      {#each projects as { project_name, project_img, project_desc, project_link }}
+        <Card
+          href={project_link}
+          target="_blank"
+          img={project_img}
+          imgClass="w-full h-36 overflow-hidden rounded-t-lg object-cover"
+          class="rounded-lg bg-black border-gray-500 hover:scale-105 hover:border-lime-200 transition-transform"
+        >
+          <h5 class="mb-2 text-2xl font-bold tracking-tigh text-lime-400">
+            {project_name}
+          </h5>
+          <div class="h-12">
+            <p class="font-normal text-gray-70 leading-tight">{project_desc}</p>
           </div>
-        {/each}
-      </h1>
+        </Card>
+      {/each}
     </div>
   </section>
   <br />
-
   <br id="contact" />
   <section class="grid grid-cols-1 gap-6 py-6 sm:py-12 overflow-hidden">
     <div
