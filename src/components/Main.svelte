@@ -20,7 +20,7 @@
       cert_img: "images/flutter-testdome.png",
       cert_desc: "TestDome",
       cert_link:
-        "www.testdome.com/certificates/105e9e16bf3e4860a87a760a6b6b86f1",
+        "https://testdome.com/certificates/105e9e16bf3e4860a87a760a6b6b86f1",
     },
     {
       cert_name: "Administration Certification",
