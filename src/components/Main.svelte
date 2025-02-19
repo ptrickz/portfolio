@@ -14,6 +14,23 @@
     { tech_name: "XCode", tech_color: "text-blue-800" },
   ];
 
+  let certs = [
+    {
+      cert_name: "Flutter",
+      cert_img: "images/flutter-testdome.png",
+      cert_desc: "TestDome",
+      cert_link:
+        "www.testdome.com/certificates/105e9e16bf3e4860a87a760a6b6b86f1",
+    },
+    {
+      cert_name: "Administration Certification",
+      cert_img: "images/ivanti.png",
+      cert_desc: "Ivanti Neurons for ITSM",
+      cert_link:
+        "https://drive.google.com/file/d/1xOy_DnYUILq_H1M0PawomM8FvwvPm0cf/view?usp=sharing",
+    },
+  ];
+
   let projects = [
     {
       project_name: "Faculty Guide with Chatbot",
@@ -217,6 +234,37 @@
         </Card>
       {/each}
     </div>
+  </section>
+  <br />
+  <br id="certificate" />
+  <br />
+  <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
+    <h1
+      class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
+      bind:this={component}
+    >
+      Certifications
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-5 justify-center items-center gap-8 md:gap-10 lg:gap-12"
+      >
+        {#each certs as { cert_name, cert_img, cert_desc, cert_link }}
+          <Card
+            href={cert_link}
+            target="_blank"
+            img={cert_img}
+            imgClass="w-full h-36 overflow-hidden rounded-t-lg object-cover"
+            class="rounded-lg bg-black border-gray-500 hover:scale-105 hover:border-lime-200 transition-transform"
+          >
+            <h5 class="mb-2 text-2xl font-bold tracking-tigh text-lime-400">
+              {cert_name}
+            </h5>
+            <div class="h-1 text-sm">
+              <p class="font-normal text-gray-70 leading-tight">{cert_desc}</p>
+            </div>
+          </Card>
+        {/each}
+      </div>
+    </h1>
   </section>
   <br />
   <br id="contact" />

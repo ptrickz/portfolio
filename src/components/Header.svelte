@@ -5,6 +5,7 @@
     { name: "About Me", link: "#about" },
     { name: "What I Use", link: "#tech" },
     { name: "Projects", link: "#projects" },
+    { name: "Certifications", link: "#certificate" },
     { name: "Contact", link: "#contact" },
   ];
 </script>
