@@ -41,6 +41,12 @@
         "https://docs.google.com/presentation/d/110fBZGL08JEzMD7SFXwJWA1Nnon4xdUV/edit?usp=sharing&ouid=115596111486891015734&rtpof=true&sd=true",
     },
     {
+      project_name: "Recipe Finder App (WIP)",
+      project_img: "images/rf.png",
+      project_desc: "A Recipe Finder App using ReactJS & TheMealDB",
+      project_link: "https://recipe-finder-hazel-ten.vercel.app/",
+    },
+    {
       project_name: "IVS300 Mobile Application",
       project_img: "images/ivs.png",
       project_desc: "A CCTV Monitoring mobile application for SDEC",
