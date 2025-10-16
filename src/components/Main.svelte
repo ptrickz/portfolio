@@ -6,6 +6,8 @@
 
   gsap.registerPlugin(ScrollTrigger);
   let component: HTMLElement;
+  let projectsComponent: HTMLElement;
+  let certsComponent: HTMLElement;
   let tech = [
     { tech_name: "Flutter", tech_color: "text-blue-400" },
     { tech_name: "ReactJS", tech_color: "text-blue-600" },
@@ -92,6 +94,38 @@
     email: "pattrickpatt@gmail.com",
     phoneNumber: "+60 16 432 6915",
   };
+
+  let formData = {
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  };
+
+  function handleSubmit(event: Event) {
+    event.preventDefault();
+
+    const mailtoLink = `mailto:${socialLinks.email}?subject=${encodeURIComponent(
+      formData.subject
+    )}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    )}`;
+
+    // Create a temporary link and click it
+    const link = document.createElement('a');
+    link.href = mailtoLink;
+    link.click();
+
+    // Reset form after a short delay
+    setTimeout(() => {
+      formData = {
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      };
+    }, 100);
+  }
 
   onMount(() => {
     const tl = gsap.timeline({
@@ -181,42 +215,38 @@
   <br id="tech" />
   <br />
   <section
-    class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14 overflow-hidden"
+    class="flex flex-col py-8 sm:py-14 overflow-hidden"
+    bind:this={component}
   >
-    <div
-      class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10"
+    <h1
+      class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase text-center lg:text-left mb-10"
     >
-      <h1
-        class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
-        bind:this={component}
+      Tech I Use
+    </h1>
+    {#each tech as { tech_name, tech_color }}
+      <div
+        class="tech-row poppins font-semibold flex mb-8 items-center justify-center gap-4 text-slate-700"
       >
-        Tech I Use
-      </h1>
-      {#each tech as { tech_name, tech_color }}
-        <div
-          class="tech-row poppins font-semibold flex mb-8 items-center justify-center gap-4 text-slate-700"
-        >
-          {#each Array(14) as _, i}
-            <span
-              class={"tech-item text-4xl font-extrabold uppercase tracking-tighter " +
-                (i == 7 && tech_color ? tech_color : "inherit")}
-              >{tech_name}
-            </span>
-            <i
-              class={"fa-solid fa-circle text-3xl " +
-                (i == 6 && tech_color ? tech_color : "inherit")}
-            ></i>
-          {/each}
-        </div>
-      {/each}
-    </div>
+        {#each Array(14) as _, i}
+          <span
+            class={"tech-item text-4xl font-extrabold uppercase tracking-tighter whitespace-nowrap " +
+              (i == 7 && tech_color ? tech_color : "inherit")}
+            >{tech_name}
+          </span>
+          <i
+            class={"fa-solid fa-circle text-3xl " +
+              (i == 6 && tech_color ? tech_color : "inherit")}
+          ></i>
+        {/each}
+      </div>
+    {/each}
   </section>
   <br id="projects" />
   <br />
   <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
     <h1
       class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
-      bind:this={component}
+      bind:this={projectsComponent}
     >
       Mobile Apps & Websites
     </h1>
@@ -247,123 +277,220 @@
   <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
     <h1
       class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase"
-      bind:this={component}
+      bind:this={certsComponent}
     >
       Certifications
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-5 justify-center items-center gap-8 md:gap-10 lg:gap-12"
-      >
-        {#each certs as { cert_name, cert_img, cert_desc, cert_link }}
-          <Card
-            href={cert_link}
-            target="_blank"
-            img={cert_img}
-            imgClass="w-full h-36 overflow-hidden rounded-t-lg object-cover"
-            class="rounded-lg bg-black border-gray-500 hover:scale-105 hover:border-lime-200 transition-transform"
-          >
-            <h5 class="mb-2 text-2xl font-bold tracking-tigh text-lime-400">
-              {cert_name}
-            </h5>
-            <div class="h-1 text-sm">
-              <p class="font-normal text-gray-70 leading-tight">{cert_desc}</p>
-            </div>
-          </Card>
-        {/each}
-      </div>
     </h1>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 p-5 justify-center items-center gap-8 md:gap-10 lg:gap-12"
+    >
+      {#each certs as { cert_name, cert_img, cert_desc, cert_link }}
+        <Card
+          href={cert_link}
+          target="_blank"
+          img={cert_img}
+          imgClass="w-full h-36 overflow-hidden rounded-t-lg object-cover"
+          class="rounded-lg bg-black border-gray-500 hover:scale-105 hover:border-lime-200 transition-transform"
+        >
+          <h5 class="mb-2 text-2xl font-bold tracking-tigh text-lime-400">
+            {cert_name}
+          </h5>
+          <div class="h-1 text-sm">
+            <p class="font-normal text-gray-70 leading-tight">{cert_desc}</p>
+          </div>
+        </Card>
+      {/each}
+    </div>
+  </section>
+  <br />
+  <br id="resume" />
+  <br />
+  <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
+    <h1
+      class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase mb-8"
+    >
+      Resume
+    </h1>
+    <div class="flex flex-col gap-8">
+      <p class="text-xl sm:text-2xl text-gray-300">
+        Interested in learning more about my experience and qualifications?
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          class="blueShadow relative overflow-hidden px-8 py-4 group rounded-lg bg-lime-400 text-slate-950 font-bold text-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-3"
+        >
+          <i class="fa-solid fa-eye text-xl"></i>
+          <span>View Resume</span>
+        </a>
+        <a
+          href="/resume.pdf"
+          download="Pattrick_Pengiran_Resume.pdf"
+          class="blueShadow relative overflow-hidden px-8 py-4 group rounded-lg bg-blue-400 text-slate-950 font-bold text-lg hover:scale-105 transition-transform duration-200 flex items-center justify-center gap-3"
+        >
+          <i class="fa-solid fa-download text-xl"></i>
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
   </section>
   <br />
   <br id="contact" />
-  <section class="grid grid-cols-1 gap-6 py-6 sm:py-12 overflow-hidden">
-    <div
-      class="flex flex-col lg:justify-center text-center lg:text-left gap-4 md:gap-6 lg:gap-8"
+  <section class="flex flex-col py-8 sm:py-14 overflow-hidden">
+    <h1
+      class="font-semibold text-5xl sm:text-6xl md:text-7xl text-gray-300 uppercase mb-8"
     >
-      <h1
-        class="font-semibold text-4xl sm:text-5xl md:text-6xl text-gray-300 uppercase"
-      >
-        Contact
-      </h1>
-      <div
-        class="flex flex-wrap justify-center lg:justify-start items-center gap-6"
-      >
-        <!-- GitHub -->
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            class="w-5 h-5 sm:w-6 sm:h-6 text-white"
-          >
-            <path
-              d="M12 0C5.371 0 0 5.371 0 12c0 5.303 3.438 9.8 8.207 11.387.599.111.793-.26.793-.577v-2.163c-3.338.724-4.042-1.612-4.042-1.612-.546-1.387-1.333-1.755-1.333-1.755-1.089-.745.083-.73.083-.73 1.205.084 1.839 1.238 1.839 1.238 1.07 1.833 2.809 1.303 3.495.997.108-.775.418-1.303.76-1.604-2.665-.305-5.466-1.332-5.466-5.931 0-1.31.469-2.381 1.238-3.221-.123-.303-.536-1.522.118-3.176 0 0 1.01-.322 3.3 1.23a11.46 11.46 0 0 1 3.003-.404c1.019.005 2.046.138 3.003.404 2.29-1.552 3.3-1.23 3.3-1.23.656 1.654.243 2.873.12 3.176.771.84 1.238 1.911 1.238 3.221 0 4.609-2.806 5.624-5.479 5.921.429.372.814 1.102.814 2.222v3.293c0 .32.192.694.801.576C20.565 21.795 24 17.3 24 12 24 5.371 18.629 0 12 0z"
+      Get In Touch
+    </h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Contact Form -->
+      <div class="flex flex-col gap-6">
+        <p class="text-xl sm:text-2xl text-gray-300">
+          Have a question or want to work together? Fill out the form below and
+          I'll get back to you as soon as possible.
+        </p>
+        <form class="flex flex-col gap-4" on:submit={handleSubmit}>
+          <div class="flex flex-col gap-2">
+            <label for="name" class="text-gray-300 font-semibold">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              bind:value={formData.name}
+              required
+              class="px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-lime-400 transition-colors"
+              placeholder="Your Name"
             />
-          </svg>
-          <a
-            href={socialLinks.github}
-            target="_blank"
-            class="font-semibold text-lg sm:text-xl text-white"
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="email" class="text-gray-300 font-semibold">Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              bind:value={formData.email}
+              required
+              class="px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-lime-400 transition-colors"
+              placeholder="your.email@example.com"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="subject" class="text-gray-300 font-semibold"
+              >Subject</label
+            >
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              bind:value={formData.subject}
+              required
+              class="px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-lime-400 transition-colors"
+              placeholder="What's this about?"
+            />
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-gray-300 font-semibold"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              bind:value={formData.message}
+              required
+              rows="6"
+              class="px-4 py-3 rounded-lg bg-slate-800 border border-slate-600 text-white focus:outline-none focus:border-lime-400 transition-colors resize-none"
+              placeholder="Your message here..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="blueShadow px-8 py-4 rounded-lg bg-lime-400 text-slate-950 font-bold text-lg hover:bg-lime-300 hover:scale-105 transition-all duration-200 flex items-center justify-center gap-3"
           >
-            GitHub
-          </a>
+            <i class="fa-solid fa-paper-plane text-xl"></i>
+            <span>Send Message</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info & Social Links -->
+      <div class="flex flex-col gap-8">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400 mb-6">
+            Contact Information
+          </h2>
+          <div class="flex flex-col gap-4">
+            <!-- Email -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center"
+              >
+                <i class="fa-solid fa-envelope text-green-400 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-400 text-sm">Email</p>
+                <a
+                  href={`mailto:${socialLinks.email}`}
+                  class="font-semibold text-lg text-green-400 hover:text-green-300"
+                >
+                  {socialLinks.email}
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center"
+              >
+                <i class="fa-solid fa-phone text-yellow-400 text-xl"></i>
+              </div>
+              <div>
+                <p class="text-gray-400 text-sm">Phone</p>
+                <p class="font-semibold text-lg text-yellow-400">
+                  {socialLinks.phoneNumber}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <!-- LinkedIn -->
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            class="w-5 h-5 sm:w-6 sm:h-6 text-blue-400"
-          >
-            <path
-              d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.208 24 24 23.226 24 22.271V1.729C24 .774 23.208 0 22.225 0zM7.125 20.452H3.562V9h3.563v11.452zM5.345 7.643c-1.141 0-2.063-.938-2.063-2.083 0-1.15.922-2.083 2.063-2.083 1.141 0 2.063.938 2.063 2.083 0 1.145-.922 2.083-2.063 2.083zM20.451 20.452h-3.562V14.83c0-1.342-.029-3.072-1.872-3.072-1.872 0-2.158 1.461-2.158 2.973v5.721h-3.562V9h3.419v1.561h.049c.477-.903 1.641-1.856 3.38-1.856 3.618 0 4.285 2.383 4.285 5.479v6.268z"
-            />
-          </svg>
-          <a
-            href={socialLinks.linkedin}
-            target="_blank"
-            class="font-semibold text-lg sm:text-xl text-blue-400"
-          >
-            LinkedIn
-          </a>
+        <!-- Social Links -->
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-semibold text-lime-400 mb-6">
+            Connect With Me
+          </h2>
+          <div class="flex gap-4">
+            <!-- GitHub -->
+            <a
+              href={socialLinks.github}
+              target="_blank"
+              class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:scale-110 transition-all duration-200"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github text-white text-2xl"></i>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              href={socialLinks.linkedin}
+              target="_blank"
+              class="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center hover:bg-slate-700 hover:scale-110 transition-all duration-200"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin text-blue-400 text-2xl"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- Email -->
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            class="w-5 h-5 sm:w-6 sm:h-6 text-green-400"
-          >
-            <path
-              d="M12 13.065 2.365 6.558C2.94 6.165 3.655 6 4.5 6h15c.845 0 1.56.165 2.135.558L12 13.065zM12 15.065l9.7-6.708c.187.439.3.946.3 1.517v7c0 1.104-.897 2-2 2H4c-1.103 0-2-.896-2-2v-7c0-.571.113-1.078.3-1.517L12 15.065z"
-            />
-          </svg>
-          <a
-            href={`mailto:${socialLinks.email}`}
-            target="_blank"
-            class="font-semibold text-lg sm:text-xl text-green-400"
-          >
-            {socialLinks.email}
-          </a>
-        </div>
-
-        <!-- Phone -->
-        <div class="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            class="w-6 h-6 text-yellow-400"
-          >
-            <path
-              d="M3.654 2.82a3.248 3.248 0 0 1 2.657-1.375h2.041c.945 0 1.8.576 2.135 1.432l1.15 3.057a3.253 3.253 0 0 1-.779 3.46l-1.36 1.36a12.163 12.163 0 0 0 5.657 5.657l1.36-1.36a3.254 3.254 0 0 1 3.46-.779l3.057 1.15a3.253 3.253 0 0 1 1.432 2.135v2.041c0 1.018-.496 1.978-1.375 2.657a3.247 3.247 0 0 1-2.865.525c-3.72-1.24-7.05-3.45-9.838-6.238-2.787-2.788-4.998-6.117-6.238-9.838a3.248 3.248 0 0 1 .525-2.865z"
-            />
-          </svg>
-
-          <p class="font-semibold text-lg sm:text-xl text-yellow-400">
-            {socialLinks.phoneNumber}
+        <!-- Note -->
+        <div class="mt-4 p-6 bg-slate-800 rounded-lg border border-slate-700">
+          <p class="text-sm text-gray-400">
+            <i class="fa-solid fa-circle-info text-lime-400 mr-2"></i>
+            The contact form will open your default email client with the message
+            pre-filled. You can also reach me directly using the contact information
+            above.
           </p>
         </div>
       </div>
