@@ -1,11 +1,9 @@
 <script>
   import "../app.css";
-  import Footer from "../components/Footer.svelte";
-  import Header from "../components/Header.svelte";
+  import Header from "../components/layout/Header.svelte";
+  import Footer from "../components/layout/Footer.svelte";
 
   let y;
-  let innerHeight = 0;
-  let innerWidth = 0;
 
   function goToTop() {
     document.body.scrollIntoView();
@@ -31,4 +29,4 @@
   <Footer />
 </div>
 
-<svelte:window bind:scrollY={y} bind:innerHeight bind:innerWidth />
+<svelte:window bind:scrollY={y} />
