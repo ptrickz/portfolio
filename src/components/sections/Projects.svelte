@@ -24,7 +24,7 @@
           {project_name}
         </h5>
         <div class="min-h-[3rem]">
-          <p class="font-normal text-gray-700 leading-tight">{project_desc}</p>
+          <p class="font-normal text-gray-400 leading-tight">{project_desc}</p>
         </div>
       </Card>
     {/each}

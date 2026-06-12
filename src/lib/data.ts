@@ -30,13 +30,15 @@ export const certs: Cert[] = [
     cert_name: "Flutter",
     cert_img: "images/flutter-testdome.png",
     cert_desc: "TestDome",
-    cert_link: "https://testdome.com/certificates/105e9e16bf3e4860a87a760a6b6b86f1",
+    cert_link:
+      "https://testdome.com/certificates/105e9e16bf3e4860a87a760a6b6b86f1",
   },
   {
     cert_name: "Administration Certification",
     cert_img: "images/ivanti.png",
     cert_desc: "Ivanti Neurons for ITSM",
-    cert_link: "https://drive.google.com/file/d/1xOy_DnYUILq_H1M0PawomM8FvwvPm0cf/view?usp=sharing",
+    cert_link:
+      "https://drive.google.com/file/d/1xOy_DnYUILq_H1M0PawomM8FvwvPm0cf/view?usp=sharing",
   },
 ];
 
@@ -44,8 +46,10 @@ export const projects: Project[] = [
   {
     project_name: "Faculty Guide with Chatbot",
     project_img: "images/faqulty.png",
-    project_desc: "A faculty guide application with AI Chatbot (Google Dialogflow)",
-    project_link: "https://docs.google.com/presentation/d/110fBZGL08JEzMD7SFXwJWA1Nnon4xdUV/edit?usp=sharing&ouid=115596111486891015734&rtpof=true&sd=true",
+    project_desc:
+      "A faculty guide application with AI Chatbot (Google Dialogflow)",
+    project_link:
+      "https://docs.google.com/presentation/d/110fBZGL08JEzMD7SFXwJWA1Nnon4xdUV/edit?usp=sharing&ouid=115596111486891015734&rtpof=true&sd=true",
   },
   {
     project_name: "Recipe Finder App (WIP)",
@@ -72,6 +76,25 @@ export const projects: Project[] = [
     project_link: "https://www.sma.gov.my/web/home/index/",
   },
   {
+    project_name: "RUAI",
+    project_img: "images/ruai.png",
+    project_desc:
+      "An AI Chatbot with Data Ingestion for Government Agencies made using Flutter",
+    project_link: "https://ruai.impactbs.my",
+  },
+  {
+    project_name: "IMBA",
+    project_img: "images/imba.png",
+    project_desc: "A Chatbbot for Impact Business Solutions Sdn Bhd Website",
+    project_link: "https://impact-multimedia.com/ibs/",
+  },
+  {
+    project_name: "Digital Twin",
+    project_img: "images/dt.png",
+    project_desc: "Digital Twin Dashboards for various use cases",
+    project_link: "",
+  },
+  {
     project_name: "MPRH Website",
     project_img: "images/mprh.png",
     project_desc: "A wordpress website for MPRH - LPPKN",
@@ -80,13 +103,15 @@ export const projects: Project[] = [
   {
     project_name: "Luggage Booking App",
     project_img: "images/eluggage.png",
-    project_desc: "A luggage booking mobile application for UNIMAS students (Freelance)",
+    project_desc:
+      "A luggage booking mobile application for UNIMAS students (Freelance)",
     project_link: "",
   },
   {
     project_name: "Tempeh Store App",
     project_img: "images/toba.png",
-    project_desc: "A tempeh store booking application for small tempeh business (Freelance)",
+    project_desc:
+      "A tempeh store booking application for small tempeh business (Freelance)",
     project_link: "",
   },
 ];
